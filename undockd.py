@@ -15,8 +15,6 @@ app.config["MONGODB_SETTINGS"] = {
     "host": os.environ.get("MONGO_PORT_27017_TCP_ADDR", "127.0.0.1"),
     "port": os.environ.get("MONGO_PORT_27017_TCP_PORT", 27017)
 }
-app.config["MONGO_HOST"] = os.environ.get("MONGO_PORT_27017_TCP_ADDR")
-app.config["MONGO_PORT"] = os.environ.get("MONGO_PORT_27017_TCP_PORT")
 
 db = MongoEngine(app)
 
