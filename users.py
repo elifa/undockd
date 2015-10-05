@@ -5,21 +5,21 @@ import undockd
 from flask import Blueprint, request
 
 db = undockd.db
-api = Blueprint("jobs", __name__)
+api = Blueprint("users", __name__)
 
 @api.route("/")
-def getJobs():
-    return "list of accounts"
+def getUsers():
+    return "list of users"
 
 @api.route("/", methods=["POST"])
-def createJob():
+def createUser():
     return request.json
 
-@api.route("/<job>", methods=["PATCH"])
-def updateJob(job):
+@api.route("/<user>", methods=["PATCH"])
+def updateUser(job):
     return request.json + job
 
-class Job(db.Document):
+class User(db.Document):
     email = db.StringField(required=True)
     first_name = db.StringField(max_length=50)
     last_name = db.StringField(max_length=50)
