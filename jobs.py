@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from undockd import db
 from flask import Blueprint, request
 
 api = Blueprint("jobs", __name__)
@@ -16,3 +17,8 @@ def createJob():
 @api.route("/<job>", methods=["PATCH"])
 def updateJob(job):
     return request.json + job
+
+class User(db.Document):
+    email = db.StringField(required=True)
+    first_name = db.StringField(max_length=50)
+    last_name = db.StringField(max_length=50)
