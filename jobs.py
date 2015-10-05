@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from undockd import db
+import undockd
 from flask import Blueprint, request
 
+db = undockd.db
 api = Blueprint("jobs", __name__)
 
 @api.route("/")

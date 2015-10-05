@@ -2,8 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from undockd import jobs, sessions
-from flask import Flask, redirect, request, jsonify, render_template
+from flask import Flask, redirect
 from flask.ext.mongoengine import MongoEngine
 
 app = Flask(__name__)
@@ -17,6 +16,8 @@ app.config["MONGODB_SETTINGS"] = {
 }
 
 db = MongoEngine(app)
+
+from undockd import jobs, sessions
 
 app.register_blueprint(jobs.api, url_prefix="/jobs")
 app.register_blueprint(sessions.api, url_prefix="/sessions")
