@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 
 import undockd
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
+from docker import Client
 
 db = undockd.db
 api = Blueprint("jobs", __name__)
+docker = Client(base_url="unix://var/run/docker.sock")
 
 @api.route("/")
 def getJobs():
-    return "list of accounts"
+    return jsonify(data=Job.objects)
 
 @api.route("/", methods=["POST"])
 def createJob():
@@ -19,7 +21,22 @@ def createJob():
 def updateJob(job):
     return request.json + job
 
+class Image(db.EmbeddedDocument):
+    id = db.StringField(required=True)
+    name = db.StringField(required=True)
+
+class Container(db.EmbeddedDocument):
+    id = db.StringField(required=True)
+    name = db.StringField(required=True)
+    branch = db.StringField(required=True)
+
+class Repository(db.EmbeddedDocument):
+    url = db.StringField(required=True)
+    auth = db.StringField()
+
 class Job(db.Document):
-    email = db.StringField(required=True)
-    first_name = db.StringField(max_length=50)
-    last_name = db.StringField(max_length=50)
+    id = db.StringField(required=True)
+    name = db.StringField(required=True)
+    image = db.EmbeddedDocumentField(Image)
+    repository = db.EmbeddedDocumentField(Repository)
+    containers = db.EmbeddedDocumentListField(Container)

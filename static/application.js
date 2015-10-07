@@ -1,3 +1,5 @@
-var test = require("./test");
+import Test from "./test.js";
 
-document.body.appendChild(document.createElement("div").innerText(test));
+var div = document.createElement("div");
+document.body.appendChild(div);
+div.textContent = new Test().test;

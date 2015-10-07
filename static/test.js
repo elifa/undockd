@@ -1,1 +1,8 @@
-module.exports = "TEST";
+
+export default class Test {
+
+    constructor() {
+        this.test = "TEST";
+    }
+
+}
