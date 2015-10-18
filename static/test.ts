@@ -5,4 +5,4 @@ export default class Test {
         this.test = "TEST";
     }
 
-}
+};
