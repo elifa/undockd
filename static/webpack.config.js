@@ -1,22 +1,23 @@
 module.exports = {
-    "entry": "./application.js",
-    "output": {
-        "path": __dirname,
-        "filename": "undockd.js"
-    },
-    "module": {
-        "loaders": [
-            {
-                "test": /\.css$/,
-                "loader": "style!css"
-            }, {
-                "test": /\.scss$/,
-                "loader": "style!css!sass"
-            }, {
-                "test": /\.js$/,
-                "exclude": /node_modules/,
-                "loader": "babel"
-            }
-        ]
-    }
+  "entry": "./application.ts",
+  "devtool": "source-map",
+  "output": {
+    "path": __dirname,
+    "filename": "undockd.js"
+  },
+  "resolve": {
+    "extensions": ["", ".webpack.js", ".ts", ".js"]
+  },
+  "module": {
+    "loaders": [
+      {
+        "test": /\.ts$/,
+        "exclude": /node_modules/,
+        "loader": "ts"
+      }
+    ]
+  },
+  "ts": {
+    "configFileName": "ts.config.json"
+  }
 };

@@ -2,4 +2,5 @@
 Undockd.iml
 __pycache__/*
 static/undockd.js
+static/undockd.js.map
 static/node_modules
