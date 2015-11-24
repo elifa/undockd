@@ -18,6 +18,6 @@ module.exports = {
     ]
   },
   "ts": {
-    "configFileName": "ts.config.json"
+    "configFileName": "tsconfig.json"
   }
 };
