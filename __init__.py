@@ -12,7 +12,8 @@ app.config["SEND_FILE_MAX_AGE_DEFAULT"] = 1
 app.config["MONGODB_SETTINGS"] = {
     "db": __name__,
     "host": os.environ.get("MONGO_PORT_27017_TCP_ADDR", "127.0.0.1"),
-    "port": int(os.environ.get("MONGO_PORT_27017_TCP_PORT", 27017))
+    "port": int(os.environ.get("MONGO_PORT_27017_TCP_PORT", 27017)),
+    "connect": False
 }
 
 db = MongoEngine(app)

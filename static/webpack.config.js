@@ -1,23 +1,31 @@
 module.exports = {
-  "entry": "./application.ts",
+  "debug": true,
   "devtool": "source-map",
+  "entry": "application",
   "output": {
-    "path": __dirname,
     "filename": "undockd.js"
   },
   "resolve": {
+    "modulesDirectories": ["node_modules", "."],
     "extensions": ["", ".webpack.js", ".ts", ".js"]
   },
   "module": {
-    "loaders": [
-      {
-        "test": /\.ts$/,
-        "exclude": /node_modules/,
-        "loader": "ts"
+    "preLoaders": [{
+      "test": /\.ts(x?)$/,
+      "loader": "ts-loader",
+      "query": {
+        "configFileName": "typescript.config.json"
       }
-    ]
-  },
-  "ts": {
-    "configFileName": "tsconfig.json"
+    }],
+    "loaders": [{
+      "test": /\.(j|t)s(x?)$/,
+      "loader": "babel-loader",
+      "query": {
+        "presets": [
+          "es2015",
+          "stage-2"
+        ]
+      }
+    }]
   }
 };

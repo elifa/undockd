@@ -1,4 +1,6 @@
 
+import CustomElement from "./CustomElement"
+
 class DynamicContainer {
     private template = `my
     template
@@ -9,7 +11,7 @@ class DynamicContainer {
     }
 }
 var template: string = `<button>test</button>`
-export default class DateWidget extends HTMLElement {
+export default class DateWidget extends CustomElement {
 
     applyAuthorStyles = true;
 
