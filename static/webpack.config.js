@@ -7,15 +7,12 @@ module.exports = {
   },
   "resolve": {
     "modulesDirectories": ["node_modules", "."],
-    "extensions": ["", ".webpack.js", ".ts", ".js"]
+    "extensions": ["", ".ts", ".js"]
   },
   "module": {
     "preLoaders": [{
       "test": /\.ts(x?)$/,
-      "loader": "ts-loader",
-      "query": {
-        "configFileName": "typescript.config.json"
-      }
+      "loader": "ts-loader"
     }],
     "loaders": [{
       "test": /\.(j|t)s(x?)$/,
@@ -24,6 +21,9 @@ module.exports = {
         "presets": [
           "es2015",
           "stage-2"
+        ],
+        "plugins": [
+          "transform-proto-to-assign"
         ]
       }
     }]

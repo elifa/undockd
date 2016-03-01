@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import Test from "./services/test";
 import DateWidget from "./components/DynamicContainer";
 
